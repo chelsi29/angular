@@ -1,0 +1,84 @@
+<div class="form flex flex-col justify-center items-center font-[sans-serif] bg-white text-[#333] md:h-screen ">
+          <div
+              class="grid md:grid-cols-2 items-center gap-y-8 max-w-7xl w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] m-6 rounded-md relative overflow-hidden">
+              <div class="max-md:order-1 p-4 bg-gray-50 h-full hidden md:block">
+                  <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-4489776-3757211.png?f=webp"
+                      class="lg:max-w-[90%] w-full h-full object-contain block mx-auto " alt="login-image" />
+              </div>
+              <div class="flex items-center justify-center p-6 max-w-md w-full h-full mx-auto md:mx-0 ">
+                  <!-- Added justify-center -->
+                  <form class="w-full" [formGroup]="loginUser">
+                      <div class="mb-5">
+                          <h2 class="text-blue-500 lg:text-3xl text-2xl font-extrabold max-md:text-center">Sign in here
+                          </h2>
+                      </div>
+                      <div class="-mx-3 mb-6">
+                          <div class="md:w-full px-3">
+                              <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                  for="grid-password">
+                                  Email Address
+                              </label>
+                              <mat-form-field class="w-full">
+                                  <input matInput placeholder="Email" formControlName="email" />
+                                  <mat-icon matSuffix>email</mat-icon>
+                                  @if (this.loginUser.get('email').hasError('required')) {
+                                  <mat-error>Please enter your email</mat-error>
+                                  }
+                                  @if (this.loginUser.get('email').hasError('email')) {
+                                  <mat-error>Please enter a valid email address.</mat-error>
+                                  }
+                              </mat-form-field>
+                          </div>
+                          <!-- Password Name Start -->
+                          <div class="md:w-full px-3">
+                              <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                  for="grid-password">
+                                  Password
+                              </label>
+      
+                              <mat-form-field class="w-full">
+                                  <input class="password" [type]="hide?'password':'text'" matInput formControlName="password"
+                                      placeholder="Password">
+      
+                                  <button type="button" (click)="toggleButton()"
+                                      class="absolute inset-y-0 flex items-center right-0 px-3 py-2 focus:outline-none">
+                                      <mat-icon matSuffix class="">{{hide ? 'visibility_off' :
+                                          'visibility'}}</mat-icon>
+                                  </button>
+                                  @if (this.loginUser.get('password').hasError('required')) {
+                                  <mat-error>Please enter your password</mat-error>
+                                  }
+                                  @if (this.loginUser.get('password').hasError('password')) {
+                                  <mat-error>Please enter a valid password.</mat-error>
+                                  }
+                                  @if (this.loginUser.get('password').hasError('pattern')) {
+                                  <mat-error>Password is not so strong</mat-error>
+                                  }
+                                  @if (this.loginUser.get('password').hasError('minlength')) {
+                                  <mat-error>Password must be at least 8 characters long.</mat-error>
+                                  }
+                                  @if (this.loginUser.get('password').hasError('maxlength')) {
+                                  <mat-error>Password cannot exceed 20 characters.</mat-error>
+                                  }
+                              </mat-form-field>
+                          </div>
+                          <!-- Password Name End -->
+                      </div>
+                      <div>
+                          <button type="button" (click)="login()"
+                              class="w-full shadow-xl py-3.5 mt-5 px-8 text-sm font-semibold rounded-xl bg-blue-500 hover:bg-blue-600 text-white border focus:outline-none transition-all">
+                              login
+                          </button>
+                      </div>
+                      <div class="mt-12">
+                          <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              Don’t have an account yet? <a routerLinkActive='active' [routerLink]="['/register']"
+                                  class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                          </p>
+                      </div>
+                  </form>
+              </div>
+              <div class="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-blue-400 max-sm:hidden"></div>
+              <div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-blue-400 max-sm:hidden"></div>
+          </div>
+      </div>

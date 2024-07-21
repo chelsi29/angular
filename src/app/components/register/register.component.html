@@ -1,0 +1,397 @@
+<div class="form flex flex-col justify-center items-center font-[sans-serif] bg-white text-[#333] md:h-screen">
+          <div
+              class="grid md:grid-cols-2 items-center gap-y-8 max-w-7xl w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] m-6 rounded-md relative overflow-hidden">
+              <div class="max-md:order-1 p-4 bg-gray-50 h-full hidden md:block">
+                  <img src="https://cdni.iconscout.com/illustration/premium/thumb/evaluation-or-employee-assessment-8040468-6477702.png"
+                      class="lg:max-w-[90%] w-full h-full object-contain block mx-auto " alt="login-image" />
+              </div>
+              <div class="flex items-center p-6 max-w-md w-full h-full mx-auto">
+                  <form class="w-full" [formGroup]="registerUser">
+                      <div class="mb-5">
+                          <h2 class="text-blue-500 lg:text-3xl text-2xl font-extrabold max-md:text-center">Create an
+                              account
+                          </h2>
+                      </div>
+                      <mat-stepper headerPosition="bottom" #stepper>
+                          <mat-step class="mat-label">
+                              <div class="-mx-3 mb-6">
+                                  <div class="px-3 md:mb-0">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-first-name">
+                                          First Name
+                                      </label>
+      
+                                      <mat-form-field class="w-full">
+                                          <mat-icon matSuffix>person_pin</mat-icon>
+                                          <input matInput placeholder="Firstname" formControlName="firstname" />
+                                          @if (this.registerUser.get('firstname').hasError('required')) {
+                                          <mat-error>Please enter your first name</mat-error>
+                                          }
+                                          @if (this.registerUser.get('firstname').hasError('minlength')) {
+                                          <mat-error>Firstname must be at least 2 characters long.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('firstname').hasError('maxlength')) {
+                                          <mat-error>Firstname cannot exceed 20 characters.</mat-error>
+                                          }
+                                          @if(registerUser.get('firstname').hasError('pattern')){
+                                          <mat-error>Please enter characters only.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- First Name end -->
+      
+                                  <!-- Middle Name start -->
+                                  <div class="px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-last-name">
+                                          middle name
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input matInput placeholder="Middlename" formControlName="middlename" />
+                                          <mat-icon matSuffix>person_pin</mat-icon>
+                                          @if (this.registerUser.get('middlename').hasError('required')) {
+                                          <mat-error>Please enter your middle name</mat-error>
+                                          }
+                                          @if (this.registerUser.get('middlename').hasError('minlength')) {
+                                          <mat-error>Middlename must be at least 2 characters long.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('middlename').hasError('maxlength')) {
+                                          <mat-error>Middlename cannot exceed 20 characters.</mat-error>
+                                          }
+                                          @if(registerUser.get('middlename').hasError('pattern')){
+                                          <mat-error>Please enter characters only.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- Middle Name Name End -->
+                                  <!-- Last Name start -->
+                                  <div class="px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-last-name">
+                                          Last Name
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input matInput placeholder="Lastname" formControlName="lastname" />
+                                          <mat-icon matSuffix>person_pin</mat-icon>
+                                          @if (this.registerUser.get('lastname').hasError('required')) {
+                                          <mat-error>Please enter your last name</mat-error>
+                                          }
+                                          @if (this.registerUser.get('lastname').hasError('minlength')) {
+                                          <mat-error>Lastname must be at least 2 characters long.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('lastname').hasError('maxlength')) {
+                                          <mat-error>Lastname cannot exceed 20 characters.</mat-error>
+                                          }
+                                          @if(registerUser.get('lastname').hasError('pattern')){
+                                          <mat-error>Please enter characters only.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- Lastname Name End -->
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          Phone Number
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input matInput placeholder="Phone Number"
+                                              class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded"
+                                              formControlName="phone" maxlength="10" />
+                                          <mat-icon matSuffix>phone_locked</mat-icon>
+                                          @if(registerUser.get('phone').hasError('required')){
+                                          <mat-error>Please enter your phone number</mat-error>
+                                          }
+                                          @if(registerUser.get('phone').hasError('pattern')){
+                                          <mat-error>Please enter a valid phone number with 10 digits and no
+                                              spaces.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+      
+                              <div class="flex justify-end items-center">
+                                  <button mat-mini-fab matStepperNext>
+                                      <mat-icon>keyboard_arrow_right</mat-icon>
+                                  </button>
+                              </div>
+                          </mat-step>
+                          <mat-step>
+                              <div class="-mx-3 mb-6">
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          Email Address
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input matInput placeholder="Email" formControlName="email" />
+                                          <mat-icon matSuffix>email</mat-icon>
+                                          @if (this.registerUser.get('email').hasError('required')) {
+                                          <mat-error>Please enter your email</mat-error>
+                                          }
+                                          @if (this.registerUser.get('email').hasError('email')) {
+                                          <mat-error>Please enter a valid email address.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          username
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input matInput placeholder="Username" formControlName="username" />
+                                          <mat-icon matSuffix>supervised_user_circle</mat-icon>
+                                          @if (this.registerUser.get('username').hasError('required')) {
+                                          <mat-error>Please enter your username</mat-error>
+                                          }
+                                          @if (this.registerUser.get('username').hasError('pattern')) {
+                                          <mat-error>Please enter a valid username</mat-error>
+                                          }
+                                          @if (this.registerUser.get('username').hasError('minlength')) {
+                                          <mat-error>Username must be at least 2 characters long.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('username').hasError('maxlength')) {
+                                          <mat-error>Username cannot exceed 20 characters.</mat-error>
+                                          }
+      
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- Password Name Start -->
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          Password
+                                      </label>
+      
+                                      <mat-form-field class="w-full">
+                                          <input class="password" [type]="hide?'password':'text'" matInput
+                                              formControlName="password" placeholder="Password">
+      
+                                          <button type="button" (click)="toggleButton()"
+                                              class="absolute inset-y-0 flex items-center right-0 px-3 py-2 focus:outline-none">
+                                              <mat-icon matSuffix class="">{{hide ? 'visibility_off' :
+                                                  'visibility'}}</mat-icon>
+                                          </button>
+                                          @if (this.registerUser.get('password').hasError('required')) {
+                                          <mat-error>Please enter your password</mat-error>
+                                          }
+                                          @if (this.registerUser.get('password').hasError('password')) {
+                                          <mat-error>Please enter a valid password.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('password').hasError('pattern')) {
+                                          <mat-error>Password is not so strong</mat-error>
+                                          }
+                                          @if (this.registerUser.get('password').hasError('minlength')) {
+                                          <mat-error>Password must be at least 8 characters long.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('password').hasError('maxlength')) {
+                                          <mat-error>Password cannot exceed 20 characters.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- Password Name End -->
+      
+                                  <div class="md:w-full px-3">
+                                      <!-- Confirm Password Name Start -->
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          Confirm Password
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input class="password" [type]="chide?'password':'text'" matInput
+                                              formControlName="cpassword" placeholder="Confirm Password">
+                                          <button type="button" (click)="toggleButton1()"
+                                              class="absolute inset-y-0 flex items-center right-0 px-3 py-2 focus:outline-none">
+                                              <mat-icon matSuffix>{{chide ? 'visibility_off' :
+                                                  'visibility'}}</mat-icon>
+                                          </button>
+                                          @if (this.registerUser.get('cpassword').hasError('required')) {
+                                          <mat-error>Please enter your confirm password</mat-error>
+                                          }
+                                          @if (this.registerUser.get('cpassword').hasError('password')) {
+                                          <mat-error>Please enter a valid password.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('cpassword').hasError('minlength')) {
+                                          <mat-error>Confirm Password must be at least 8 characters long.</mat-error>
+                                          }
+                                          @if (this.registerUser.get('cpassword').hasError('maxlength')) {
+                                          <mat-error>Confirm Password cannot exceed 20 characters.</mat-error>
+                                          }
+                                          @if ((!registerUser.controls['password'].valid ||
+                                          registerUser.controls['password'].value !==
+                                          registerUser.controls['cpassword'].value) &&
+                                          registerUser.controls['password']?.touched &&
+                                          registerUser.controls['cpassword']?.touched) {
+                                          <mat-hint style="color: red;">Password not matched!</mat-hint>
+                                          }
+      
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="flex justify-between items-center">
+                                  <button mat-mini-fab matStepperPrevious>
+                                      <mat-icon>keyboard_arrow_left</mat-icon>
+                                  </button>
+                                  <button mat-mini-fab matStepperNext>
+                                      <mat-icon>keyboard_arrow_right</mat-icon>
+                                  </button>
+                              </div>
+      
+                          </mat-step>
+                          <mat-step>
+                              <div class="-mx-3 mb-6">
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-gender">
+                                          Gender
+                                      </label>
+                                      <div class="flex items-center mb-3">
+                                          <mat-radio-group formControlName="gender" aria-label="Select an option"
+                                              class="w-full">
+                                              <mat-radio-button value="male">Male</mat-radio-button>
+                                              <mat-radio-button value="female">Female</mat-radio-button>
+                                              <mat-radio-button value="other">Other</mat-radio-button>
+                                              @if(registerUser.get('gender').hasError('required')){
+                                              <mat-error>Please select gender.</mat-error>
+                                              }
+                                          </mat-radio-group>
+                                      </div>
+                                  </div>
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          marital status
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <mat-label>select status</mat-label>
+                                          <mat-select formControlName="status" matNativeControl required>
+                                              <mat-option value="single">Single</mat-option>
+                                              <mat-option value="divorced">Divorced</mat-option>
+                                              <mat-option value="widowed">Widowed</mat-option>
+                                              <mat-option value="separated">Separated</mat-option>
+                                              <mat-option value="common low">Common Law</mat-option>
+                                          </mat-select>
+                                          <mat-error>Please select marital status</mat-error>
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- Password Name Start -->
+      
+                                  <div class="md:w-full px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-password">
+                                          Date of birth
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <mat-label>Choose a date</mat-label>
+                                          <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="dob">
+                                          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                          <mat-datepicker #picker></mat-datepicker>
+                                          @if(this.registerUser.get('dob').hasError('required')){
+                                          <mat-error>Please select DOB</mat-error>
+                                          }
+                                          @if(registerUser.get('dob').errors && registerUser.get('dob').errors.minimumAge){
+                                          <mat-error>You must be at least 18 years old.</mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="flex justify-between items-center">
+                                  <button mat-mini-fab matStepperPrevious>
+                                      <mat-icon>keyboard_arrow_left</mat-icon>
+                                  </button>
+                                  <button mat-mini-fab matStepperNext>
+                                      <mat-icon>keyboard_arrow_right</mat-icon>
+                                  </button>
+                              </div>
+                          </mat-step>
+                          <mat-step>
+                              <div class="-mx-3 mb-6">
+                                  <div class="px-3 mb-6 md:mb-0">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-city">
+                                          country
+                                      </label>
+                                      <div class="relative">
+                                          <mat-form-field appearance="fill" class="w-full">
+                                              <mat-label>Search Countries</mat-label>
+                                              <input type="text" formControlName="state" (change)="getCity($event)" matInput
+                                                  [matAutocomplete]="auto">
+                                              <mat-icon matSuffix>arrow_drop_down</mat-icon>
+                                              <mat-autocomplete #auto="matAutocomplete">
+                                                  <mat-option *ngFor="let country of filteredCountries | async"
+                                                      [value]="country.name">
+                                                      {{ country.name }}
+                                                  </mat-option>
+                                              </mat-autocomplete>
+                                              <mat-error>Please select country</mat-error>
+                                          </mat-form-field>
+                                      </div>
+                                  </div>
+                                  <div class=" px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-state">
+                                          city
+                                      </label>
+                                      <div class="relative">
+                                          <mat-form-field appearance="fill" class="w-full">
+                                              <mat-label>Select City</mat-label>
+                                              <input type="text" matInput formControlName="city" [matAutocomplete]="cityAuto">
+                                              <mat-icon matSuffix>arrow_drop_down</mat-icon>
+                                              <mat-autocomplete #cityAuto="matAutocomplete">
+                                                  <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                                                      {{ city }}
+                                                  </mat-option>
+                                              </mat-autocomplete>
+                                              <mat-error>Please select city</mat-error>
+                                          </mat-form-field>
+                                      </div>
+                                  </div>
+                                  <!-- Zip Start -->
+                                  <div class="px-3">
+                                      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                                          for="grid-zip">
+                                          Zip
+                                      </label>
+                                      <mat-form-field class="w-full">
+                                          <input matInput placeholder="Zipcode" maxlength="6" formControlName="pincode" />
+                                          <mat-icon matSuffix>fiber_pin</mat-icon>
+                                          @if(registerUser.get('pincode').hasError('required')){
+                                          <mat-error>Please enter your zipcode</mat-error>
+                                          }
+                                          @if(registerUser.get('pincode').hasError('pattern')){
+                                          <mat-error>Please enter a number in zipcode</mat-error>
+                                          }
+                                          @if(registerUser.get('pincode').hasError('minlength')){
+                                          <mat-error>Zipcode must be at least 6 digit long. </mat-error>
+                                          }
+                                      </mat-form-field>
+                                  </div>
+                                  <!-- Zip End -->
+                              </div>
+                              <div class="flex items-center">
+                                  <button mat-mini-fab matStepperPrevious>
+                                      <mat-icon>keyboard_arrow_left</mat-icon>
+                                  </button>
+                              </div>
+      
+                              <div>
+                                  <button [disabled]="registerBtn" type="button" (click)="regsiter()" mat-raised-button color="basic"
+                                      class="register-btn w-full mt-5 mb-2">
+                                      Register
+                                  </button>
+                              </div>
+                          </mat-step>
+                      </mat-stepper>
+      
+                      <div class="mt-12">
+                          <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              Already have an account? <a routerLinkActive='active' [routerLink]="['/login']"
+                                  class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
+                          </p>
+                      </div>
+                  </form>
+              </div>
+              <div class="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-blue-400 max-sm:hidden"></div>
+              <div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-blue-400 max-sm:hidden"></div>
+          </div>
+      </div>
